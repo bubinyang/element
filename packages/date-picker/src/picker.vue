@@ -503,7 +503,7 @@ export default {
 
     displayValue() {
       let formattedValue = formatAsFormatAndType(this.parsedValue, this.format, this.type, this.rangeSeparator);
-      if (rubbishDate.includes(formattedValue))formattedValue = '';
+
       if (Array.isArray(this.userInput)) {
         return [
           this.userInput[0] || (formattedValue && formattedValue[0]) || '',
@@ -521,6 +521,7 @@ export default {
     },
 
     parsedValue() {
+      if (rubbishDate.includes(this.value)) this.value = '';
       if (!this.value) return this.value; // component value is not set
       if (this.type === 'time-select') return this.value; // time-select does not require parsing, this might change in next major version
 
