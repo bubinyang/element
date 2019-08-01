@@ -101,6 +101,7 @@
       :aria-label="label"
     >
     </textarea>
+    测试
     <span v-if="isWordLimitVisible && type === 'textarea'" class="el-input__count">{{ textLength }}/{{ upperLimit }}</span>
 
   </div>
