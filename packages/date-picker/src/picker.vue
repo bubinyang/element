@@ -91,7 +91,7 @@ import Popper from 'element-ui/src/utils/vue-popper';
 import Emitter from 'element-ui/src/mixins/emitter';
 import ElInput from 'element-ui/packages/input';
 import merge from 'element-ui/src/utils/merge';
-
+const rubbishDate = ['0001-01-01T00:00:00', '1900-01-01T00:00:00', '1970-01-01T08:00:00', '1900/1/1 0:00:00'];
 const NewPopper = {
   props: {
     appendToBody: Popper.props.appendToBody,
@@ -502,7 +502,9 @@ export default {
     },
 
     displayValue() {
-      const formattedValue = formatAsFormatAndType(this.parsedValue, this.format, this.type, this.rangeSeparator);
+      let formattedValue = formatAsFormatAndType(this.parsedValue, this.format, this.type, this.rangeSeparator);
+      if (rubbishDate.includes(formattedValue))formattedValue = '';
+
       if (Array.isArray(this.userInput)) {
         return [
           this.userInput[0] || (formattedValue && formattedValue[0]) || '',
@@ -546,6 +548,7 @@ export default {
     },
 
     pickerDisabled() {
+
       return this.disabled || (this.elForm || {}).disabled;
     },
 
