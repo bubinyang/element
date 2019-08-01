@@ -504,7 +504,6 @@ export default {
     displayValue() {
       let formattedValue = formatAsFormatAndType(this.parsedValue, this.format, this.type, this.rangeSeparator);
       if (rubbishDate.includes(formattedValue))formattedValue = '';
-
       if (Array.isArray(this.userInput)) {
         return [
           this.userInput[0] || (formattedValue && formattedValue[0]) || '',
