@@ -90,8 +90,10 @@ class TableLayout {
   }
 
   updateElsHeight() {
+
     if (!this.table.$ready) return Vue.nextTick(() => this.updateElsHeight());
     const { headerWrapper, appendWrapper, footerWrapper } = this.table.$refs;
+
     this.appendHeight = appendWrapper ? appendWrapper.offsetHeight : 0;
 
     if (this.showHeader && !headerWrapper) return;

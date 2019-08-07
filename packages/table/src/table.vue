@@ -63,6 +63,7 @@
         <slot name="append"></slot>
       </div>
     </div>
+
     <div
       v-if="showSummary"
       v-show="data && data.length > 0"
@@ -342,7 +343,7 @@
       TableBody,
       ElCheckbox
     },
-
+  
     methods: {
       getMigratingConfig() {
         return {
@@ -598,9 +599,12 @@
       },
 
       data: {
-        immediate: true,
+        // immediate: true,
         handler(value) {
           this.store.commit('setData', value);
+          this.$nextTick(()=>{
+            this.layout.setHeight(this.height);
+          });
         }
       },
 
@@ -612,6 +616,7 @@
           }
         }
       }
+  
     },
 
     created() {
@@ -665,6 +670,7 @@
         fit: this.fit,
         showHeader: this.showHeader
       });
+  
       return {
         layout,
         isHidden: false,

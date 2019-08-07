@@ -141,6 +141,9 @@
         suggestionDisabled: false
       };
     },
+    created() {
+      console.log(this.disabled, this.cs);
+    },
     computed: {
       suggestionVisible() {
         const suggestions = this.suggestions;
