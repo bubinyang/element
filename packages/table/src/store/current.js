@@ -40,7 +40,6 @@ export default {
       // data 为 null 时，结构时的默认值会被忽略
       const data = states.data || [];
       const oldCurrentRow = states.currentRow;
-
       if (currentRow) {
         this.restoreCurrentRowKey();
         states.currentRow = currentRow;
@@ -48,6 +47,7 @@ export default {
           this.table.$emit('current-change', currentRow, oldCurrentRow);
         }
       } else {
+        states.currentRow = null;// 取消选中 bby 2019-8-13
         // 当 currentRow 不在 data 中时尝试更新数据
         if (data.indexOf(oldCurrentRow) === -1 && oldCurrentRow) {
           this.restoreCurrentRowKey();

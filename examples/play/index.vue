@@ -1,12 +1,12 @@
 <template>
   <div style="margin: 20px;height:200px">
-    <el-button type="danger" icon="el-icon-delete" @click="deleteNode">删除</el-button>
-    <!-- <el-input v-model="input" placeholder="请输入内容"></el-input>
+    <el-button type="danger" icon="el-icon-delete" >删除</el-button>
+    <el-input v-model="input" placeholder="请输入内容"></el-input>
     <el-date-picker
       v-model="value1"
       type="date"
       placeholder="选择日期">
-    </el-date-picker> -->
+    </el-date-picker>
 
 
     <!-- <el-autocomplete
@@ -19,34 +19,34 @@
 
 
   <el-table
+    ref="singleTable"
     :data="tableData"
-    border
-    height="100%"
-    :summary-method="getSummaries"
-    show-summary
-    style="width: 100%; margin-top: 20px">
+    highlight-current-row
+    @current-change="handleCurrentChange"
+    style="width: 100%">
     <el-table-column
-      prop="id"
-      label="ID"
-      width="180">
+      type="index"
+      width="50">
     </el-table-column>
     <el-table-column
-      prop="name"
-      label="姓名">
+      property="date"
+      label="日期"
+      width="120">
     </el-table-column>
     <el-table-column
-      prop="amount1"
-      label="数值 1（元）">
+      property="name"
+      label="姓名"
+      width="120">
     </el-table-column>
     <el-table-column
-      prop="amount2"
-      label="数值 2（元）">
-    </el-table-column>
-    <el-table-column
-      prop="amount3"
-      label="数值 3（元）">
+      property="address"
+      label="地址">
     </el-table-column>
   </el-table>
+  <div style="margin-top: 20px">
+    <el-button @click="setCurrent(tableData[1])">选中第二行</el-button>
+    <el-button @click="setCurrent()">取消选择</el-button>
+  </div>
 
 
   </div>
@@ -59,73 +59,34 @@
         input: 'Hello Element UI!',
         value1: '1900-01-01T00:00:00',
         disabled: true,
-        tableData: [],
-        tableDatas: [{
-          id: '12987122',
+        // tableData: [],
+        tableData: [{
+          date: '2016-05-02',
           name: '王小虎',
-          amount1: '234',
-          amount2: '3.2',
-          amount3: 10
+          address: '上海市普陀区金沙江路 1518 弄'
         }, {
-          id: '12987123',
+          date: '2016-05-04',
           name: '王小虎',
-          amount1: '165',
-          amount2: '4.43',
-          amount3: 12
+          address: '上海市普陀区金沙江路 1517 弄'
         }, {
-          id: '12987124',
+          date: '2016-05-01',
           name: '王小虎',
-          amount1: '324',
-          amount2: '1.9',
-          amount3: 9
+          address: '上海市普陀区金沙江路 1519 弄'
         }, {
-          id: '12987125',
+          date: '2016-05-03',
           name: '王小虎',
-          amount1: '621',
-          amount2: '2.2',
-          amount3: 17
-        }, {
-          id: '12987126',
-          name: '王小虎',
-          amount1: '539',
-          amount2: '4.1',
-          amount3: 15
+          address: '上海市普陀区金沙江路 1516 弄'
         }]
+
 
       };
     },
     methods: {
-      querySearchAsync() {
-  
+      setCurrent(row) {
+        this.$refs.singleTable.setCurrentRow(row);
       },
-      getSummaries(param) {
-        const { columns, data } = param;
-        const sums = [];
-        columns.forEach((column, index) => {
-          if (index === 0) {
-            sums[index] = '总价';
-            return;
-          }
-          const values = data.map(item => Number(item[column.property]));
-          if (!values.every(value => isNaN(value))) {
-            sums[index] = values.reduce((prev, curr) => {
-              const value = Number(curr);
-              if (!isNaN(value)) {
-                return prev + curr;
-              } else {
-                return prev;
-              }
-            }, 0);
-            sums[index] += ' 元';
-          } else {
-            sums[index] = 'N/A';
-          }
-        });
-
-        return sums;
-      },
-      deleteNode() {
-        this.tableData = this.tableDatas;
+      handleCurrentChange(val) {
+        this.currentRow = val;
       }
     }
   };

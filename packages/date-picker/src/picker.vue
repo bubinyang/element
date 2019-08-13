@@ -521,7 +521,7 @@ export default {
     },
 
     parsedValue() {
-      if (rubbishDate.includes(this.value)) this.value = '';
+      if (rubbishDate.includes(this.value)) return '';
       if (!this.value) return this.value; // component value is not set
       if (this.type === 'time-select') return this.value; // time-select does not require parsing, this might change in next major version
 
