@@ -11,13 +11,25 @@
       class="el-image__inner"
       v-bind="$attrs"
       v-on="$listeners"
+<<<<<<< HEAD
       :src="src"
       :style="imageStyle"
       :class="{ 'el-image__inner--center': alignCenter }">
+=======
+      @click="clickHandler"
+      :src="src"
+      :style="imageStyle"
+      :class="{ 'el-image__inner--center': alignCenter, 'el-image__preview': preview }">
+    <image-viewer :z-index="zIndex" v-if="preview && showViewer" :on-close="closeViewer" :url-list="previewSrcList"/>
+>>>>>>> upstream/master
   </div>
 </template>
 
 <script>
+<<<<<<< HEAD
+=======
+  import ImageViewer from './image-viewer';
+>>>>>>> upstream/master
   import Locale from 'element-ui/src/mixins/locale';
   import { on, off, getScrollContainer, isInContainer } from 'element-ui/src/utils/dom';
   import { isString, isHtmlElement } from 'element-ui/src/utils/types';
@@ -39,11 +51,30 @@
     mixins: [Locale],
     inheritAttrs: false,
 
+<<<<<<< HEAD
+=======
+    components: {
+      ImageViewer
+    },
+
+>>>>>>> upstream/master
     props: {
       src: String,
       fit: String,
       lazy: Boolean,
+<<<<<<< HEAD
       scrollContainer: {}
+=======
+      scrollContainer: {},
+      previewSrcList: {
+        type: Array,
+        default: () => []
+      },
+      zIndex: {
+        type: Number,
+        default: 2000
+      }
+>>>>>>> upstream/master
     },
 
     data() {
@@ -52,7 +83,12 @@
         error: false,
         show: !this.lazy,
         imageWidth: 0,
+<<<<<<< HEAD
         imageHeight: 0
+=======
+        imageHeight: 0,
+        showViewer: false
+>>>>>>> upstream/master
       };
     },
 
@@ -68,6 +104,13 @@
       },
       alignCenter() {
         return !this.$isServer && !isSupportObjectFit() && this.fit !== ObjectFit.FILL;
+<<<<<<< HEAD
+=======
+      },
+      preview() {
+        const { previewSrcList } = this;
+        return Array.isArray(previewSrcList) && previewSrcList.length > 0;
+>>>>>>> upstream/master
       }
     },
 
@@ -188,6 +231,15 @@
           default:
             return {};
         }
+<<<<<<< HEAD
+=======
+      },
+      clickHandler() {
+        this.showViewer = true;
+      },
+      closeViewer() {
+        this.showViewer = false;
+>>>>>>> upstream/master
       }
     }
   };

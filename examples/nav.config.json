@@ -283,6 +283,13 @@
             {
               "path": "/infiniteScroll",
               "title": "InfiniteScroll 无限滚动"
+<<<<<<< HEAD
+=======
+            },
+            {
+              "path": "/drawer",
+              "title": "Drawer 抽屉"
+>>>>>>> upstream/master
             }
           ]
         }
@@ -573,6 +580,13 @@
             {
               "path": "/avatar",
               "title": "Avatar"
+<<<<<<< HEAD
+=======
+            },
+            {
+              "path": "/drawer",
+              "title": "Drawer"
+>>>>>>> upstream/master
             }
           ]
         }
@@ -863,6 +877,13 @@
             {
               "path": "/avatar",
               "title": "Avatar"
+<<<<<<< HEAD
+=======
+            },
+            {
+              "path": "/drawer",
+              "title": "Drawer"
+>>>>>>> upstream/master
             }
           ]
         }
@@ -1153,6 +1174,13 @@
             {
               "path": "/avatar",
               "title": "Avatar"
+<<<<<<< HEAD
+=======
+            },
+            {
+              "path": "/drawer",
+              "title": "Drawer"
+>>>>>>> upstream/master
             }
           ]
         }

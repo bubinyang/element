@@ -34,4 +34,11 @@ export declare class ElImage extends ElementUIComponent {
   referrerPolicy: string
 
   $slots: ImageSlots
+<<<<<<< HEAD
+=======
+
+  previewSrcList: string[]
+
+  zIndex: number
+>>>>>>> upstream/master
 }

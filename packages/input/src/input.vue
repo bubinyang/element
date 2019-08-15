@@ -102,7 +102,10 @@
     >
     </textarea>
     <span v-if="isWordLimitVisible && type === 'textarea'" class="el-input__count">{{ textLength }}/{{ upperLimit }}</span>
+<<<<<<< HEAD
     测试数据
+=======
+>>>>>>> upstream/master
   </div>
 </template>
 <script>

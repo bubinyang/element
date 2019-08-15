@@ -109,6 +109,37 @@ En plus des propriétés natives de img, ce composant supporte le lazy loading, 
 ```
 :::
 
+<<<<<<< HEAD
+=======
+### Image Preview
+
+:::demo allow big image preview by setting `previewSrcList` prop.
+```html
+<div class="demo-image__preview">
+  <el-image 
+    style="width: 100px; height: 100px"
+    :src="url" 
+    :preview-src-list="srcList">
+  </el-image>
+</div>
+
+<script>
+  export default {
+    data() {
+      return {
+        url: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg',
+        srcList: [
+          'https://fuss10.elemecdn.com/8/27/f01c15bb73e1ef3793e64e6b7bbccjpeg.jpeg',
+          'https://fuss10.elemecdn.com/1/8e/aeffeb4de74e2fde4bd74fc7b4486jpeg.jpeg'
+        ]
+      }
+    }
+  }
+</script>
+```
+:::
+
+>>>>>>> upstream/master
 ### Attributs
 | Attribut | Description | Type  | Valeurs acceptées | Défaut   |
 |---------- |-------- |---------- |-------------  |-------- |
@@ -118,6 +149,11 @@ En plus des propriétés natives de img, ce composant supporte le lazy loading, 
 | referrer-policy | Attribut referrerPolicy natif.| string | - | - |
 | lazy | Si le lazy loading doit être utilisé. | boolean | — | false |
 | scroll-container | Le conteneur auquel ajouter le listener du scroll en mode lazy loading. | string / HTMLElement | — | Le conteneur parent le plus proche avec la propriété overflow à auto ou scroll. |
+<<<<<<< HEAD
+=======
+| preview-src-list | allow big image preview | Array | — | - |
+| z-index | set image preview z-index | Number | — | 2000 |
+>>>>>>> upstream/master
 
 ### Évènements
 | Nom | Description | Paramètres |

@@ -96,7 +96,11 @@
     text-align: right;
     vertical-align: middle;
     float: left;
+<<<<<<< HEAD
     font-size: 14px;
+=======
+    font-size: $--form-label-font-size;
+>>>>>>> upstream/master
     color: $--color-text-regular;
     line-height: 40px;
     padding: 0 12px 0 0;

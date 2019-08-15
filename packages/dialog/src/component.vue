@@ -3,6 +3,7 @@
     name="dialog-fade"
     @after-enter="afterEnter"
     @after-leave="afterLeave">
+<<<<<<< HEAD
     <div class="el-dialog__wrapper" v-show="visible" @click.self="handleWrapperClick">
       <div
         role="dialog"
@@ -10,6 +11,18 @@
         :aria-label="title || 'dialog'"
         class="el-dialog"
         :class="[{ 'is-fullscreen': fullscreen, 'el-dialog--center': center }, customClass]"
+=======
+    <div
+      v-show="visible"
+      class="el-dialog__wrapper"
+      @click.self="handleWrapperClick">
+      <div
+        role="dialog"
+        :key="key"
+        aria-modal="true"
+        :aria-label="title || 'dialog'"
+        :class="['el-dialog', { 'is-fullscreen': fullscreen, 'el-dialog--center': center }, customClass]"
+>>>>>>> upstream/master
         ref="dialog"
         :style="style">
         <div class="el-dialog__header">
@@ -102,12 +115,23 @@
       center: {
         type: Boolean,
         default: false
+<<<<<<< HEAD
       }
+=======
+      },
+
+      destroyOnClose: Boolean
+>>>>>>> upstream/master
     },
 
     data() {
       return {
+<<<<<<< HEAD
         closed: false
+=======
+        closed: false,
+        key: 0
+>>>>>>> upstream/master
       };
     },
 
@@ -126,6 +150,14 @@
         } else {
           this.$el.removeEventListener('scroll', this.updatePopper);
           if (!this.closed) this.$emit('close');
+<<<<<<< HEAD
+=======
+          if (this.destroyOnClose) {
+            this.$nextTick(() => {
+              this.key++;
+            });
+          }
+>>>>>>> upstream/master
         }
       }
     },

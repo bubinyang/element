@@ -1,5 +1,9 @@
 import Node from './node';
+<<<<<<< HEAD
 import { coerceTruthyValueToArray } from 'element-ui/src/utils/util';
+=======
+import { coerceTruthyValueToArray, valueEquals } from 'element-ui/src/utils/util';
+>>>>>>> upstream/master
 
 const flatNodes = (data, leafOnly) => {
   return data.reduce((res, node) => {
@@ -52,9 +56,14 @@ export default class Store {
 
   getNodeByValue(value) {
     if (value) {
+<<<<<<< HEAD
       value = Array.isArray(value) ? value[value.length - 1] : value;
       const nodes = this.getFlattedNodes(false, !this.config.lazy)
         .filter(node => node.value === value);
+=======
+      const nodes = this.getFlattedNodes(false, !this.config.lazy)
+        .filter(node => (valueEquals(node.path, value) || node.value === value));
+>>>>>>> upstream/master
       return nodes && nodes.length ? nodes[0] : null;
     }
     return null;

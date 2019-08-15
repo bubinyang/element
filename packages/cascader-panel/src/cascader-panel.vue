@@ -109,7 +109,12 @@ export default {
       checkedNodePaths: [],
       store: [],
       menus: [],
+<<<<<<< HEAD
       activePath: []
+=======
+      activePath: [],
+      loadCount: 0
+>>>>>>> upstream/master
     };
   },
 
@@ -194,6 +199,7 @@ export default {
       });
     },
     syncActivePath() {
+<<<<<<< HEAD
       let { checkedValue, store, multiple } = this;
       if (isEmpty(checkedValue)) {
         this.activePath = [];
@@ -210,6 +216,26 @@ export default {
         nodes.forEach(node => this.handleExpand(node, true /* silent */));
       }
     },
+=======
+      const { store, multiple, activePath, checkedValue } = this;
+
+      if (!isEmpty(activePath)) {
+        const nodes = activePath.map(node => this.getNodeByValue(node.getValue()));
+        this.expandNodes(nodes);
+      } else if (!isEmpty(checkedValue)) {
+        const value = multiple ? checkedValue[0] : checkedValue;
+        const checkedNode = this.getNodeByValue(value) || {};
+        const nodes = (checkedNode.pathNodes || []).slice(0, -1);
+        this.expandNodes(nodes);
+      } else {
+        this.activePath = [];
+        this.menus = [store.getNodes()];
+      }
+    },
+    expandNodes(nodes) {
+      nodes.forEach(node => this.handleExpand(node, true /* silent */));
+    },
+>>>>>>> upstream/master
     calculateCheckedNodePaths() {
       const { checkedValue, multiple } = this;
       const checkedValues = multiple
@@ -258,8 +284,14 @@ export default {
       }
     },
     handleExpand(node, silent) {
+<<<<<<< HEAD
       const { level } = node;
       const path = this.activePath.slice(0, level - 1);
+=======
+      const { activePath } = this;
+      const { level } = node;
+      const path = activePath.slice(0, level - 1);
+>>>>>>> upstream/master
       const menus = this.menus.slice(0, level);
 
       if (!node.isLeaf) {
@@ -267,15 +299,26 @@ export default {
         menus.push(node.children);
       }
 
+<<<<<<< HEAD
       if (valueEquals(path, this.activePath)) return;
 
+=======
+>>>>>>> upstream/master
       this.activePath = path;
       this.menus = menus;
 
       if (!silent) {
         const pathValues = path.map(node => node.getValue());
+<<<<<<< HEAD
         this.$emit('active-item-change', pathValues); // Deprecated
         this.$emit('expand-change', pathValues);
+=======
+        const activePathValues = activePath.map(node => node.getValue());
+        if (!valueEquals(pathValues, activePathValues)) {
+          this.$emit('active-item-change', pathValues); // Deprecated
+          this.$emit('expand-change', pathValues);
+        }
+>>>>>>> upstream/master
       }
     },
     handleCheckChange(value) {
@@ -294,10 +337,39 @@ export default {
         dataList && dataList.length && this.store.appendNodes(dataList, parent);
         node.loading = false;
         node.loaded = true;
+<<<<<<< HEAD
+=======
+
+        // dispose default value on lazy load mode
+        if (Array.isArray(this.checkedValue)) {
+          const nodeValue = this.checkedValue[this.loadCount++];
+          const valueKey = this.config.value;
+          const leafKey = this.config.leaf;
+
+          if (Array.isArray(dataList) && dataList.filter(item => item[valueKey] === nodeValue).length > 0) {
+            const checkedNode = this.store.getNodeByValue(nodeValue);
+
+            if (!checkedNode.data[leafKey]) {
+              this.lazyLoad(checkedNode, () => {
+                this.handleExpand(checkedNode);
+              });
+            }
+
+            if (this.loadCount === this.checkedValue.length) {
+              this.$parent.computePresentText();
+            }
+          }
+        }
+
+>>>>>>> upstream/master
         onFullfiled && onFullfiled(dataList);
       };
       config.lazyLoad(node, resolve);
     },
+<<<<<<< HEAD
+=======
+
+>>>>>>> upstream/master
     /**
      * public methods
     */
