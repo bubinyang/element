@@ -110,6 +110,8 @@ Además de las características nativas de img, soporte de carga perezosa, marca
 ```
 :::
 
+<<<<<<< HEAD
+=======
 ### Image Preview
 
 :::demo allow big image preview by setting `previewSrcList` prop.
@@ -138,6 +140,7 @@ Además de las características nativas de img, soporte de carga perezosa, marca
 ```
 :::
 
+>>>>>>> upstream/master
 ### Atributos
 | Atributo | Descripción | Tipo | Valores aceptados | Por defecto |
 |---------- |-------- |---------- |-------------  |-------- |
@@ -147,8 +150,11 @@ Además de las características nativas de img, soporte de carga perezosa, marca
 | referrer-policy | referrerPolicy nativo | string | - | - |
 | lazy | si se usara lazy load | boolean | — | false |
 | scroll-container | El contenedor para añadir el scroll listener cuando se utiliza lazy load | string / HTMLElement | — | El contenedor padre más cercano cuya propiedad de desbordamiento es auto o scroll |
+<<<<<<< HEAD
+=======
 | preview-src-list | allow big image preview | Array | — | - |
 | z-index | set image preview z-index | Number | — | 2000 |
+>>>>>>> upstream/master
 
 ### Eventos
 | Nombre del evento | Descripción | Parámetros |

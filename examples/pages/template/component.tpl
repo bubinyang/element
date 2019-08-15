@@ -240,6 +240,13 @@
     beforeRouteUpdate(to, from, next) {
       next();
       setTimeout(() => {
+<<<<<<< HEAD
+        if (location.href.match(/#/g).length < 2) {
+          document.documentElement.scrollTop = document.body.scrollTop = 0;
+          this.renderAnchorHref();
+        } else {
+          this.goAnchor();
+=======
         const toPath = to.path;
         const fromPath = from.path;
         if (toPath === fromPath && to.hash) {
@@ -248,6 +255,7 @@
         if (toPath !== fromPath) {
           document.documentElement.scrollTop = document.body.scrollTop = 0;
           this.renderAnchorHref();
+>>>>>>> upstream/master
         }
       }, 100);
     }

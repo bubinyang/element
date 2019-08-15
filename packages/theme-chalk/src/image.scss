@@ -39,6 +39,8 @@
     color: $--color-text-placeholder;
     vertical-align: middle;
   }
+<<<<<<< HEAD
+=======
 
   @include e(preview) {
     cursor: pointer;
@@ -174,4 +176,5 @@
     transform: translate3d(0, -20px, 0);
     opacity: 0;
   }
+>>>>>>> upstream/master
 }

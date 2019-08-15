@@ -85,6 +85,8 @@ describe('Calendar', () => {
     expect(firstRow.firstElementChild.innerText).to.be.equal('31');
     expect(firstRow.lastElementChild.innerText).to.be.equal('6');
   });
+<<<<<<< HEAD
+=======
 
   it('firstDayOfWeek in range mode', async() => {
     vm = createVue({
@@ -104,5 +106,6 @@ describe('Calendar', () => {
     expect(firstRow.firstElementChild.innerText).to.be.equal('3');
     expect(firstRow.lastElementChild.innerText).to.be.equal('9');
   });
+>>>>>>> upstream/master
 });
 

@@ -50,7 +50,10 @@
         :selected-day="realSelectedDay"
         :range="range"
         :hide-header="index !== 0"
+<<<<<<< HEAD
+=======
         :first-day-of-week="realFirstDayOfWeek"
+>>>>>>> upstream/master
         @pick="pickDay" />
     </div>
   </div>
@@ -63,7 +66,10 @@ import DateTable from './date-table';
 import { validateRangeInOneMonth } from 'element-ui/src/utils/date-util';
 
 const validTypes = ['prev-month', 'today', 'next-month'];
+<<<<<<< HEAD
+=======
 const weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+>>>>>>> upstream/master
 const oneDay = 86400000;
 
 export default {
@@ -129,6 +135,8 @@ export default {
         throw new Error('invalid val');
       }
       return val instanceof Date ? val : new Date(val);
+<<<<<<< HEAD
+=======
     },
 
     rangeValidator(date, isStart) {
@@ -140,6 +148,7 @@ export default {
         return false;
       }
       return true;
+>>>>>>> upstream/master
     }
   },
 
@@ -202,9 +211,27 @@ export default {
     validatedRange() {
       let range = this.range;
       if (!range) return [];
+<<<<<<< HEAD
+      const expetedMap = {
+        0: {
+          value: 1,
+          message: 'start of range should be Monday.'
+        },
+        1: {
+          value: 0,
+          message: 'end of range should be Sunday.'
+        }
+      };
+      range = range.reduce((prev, val, index) => {
+        const date = this.toDate(val);
+        if (date.getDay() !== expetedMap[index].value) {
+          console.warn('[ElementCalendar]', expetedMap[index].message, ' invalid range will be ignored');
+        } else {
+=======
       range = range.reduce((prev, val, index) => {
         const date = this.toDate(val);
         if (this.rangeValidator(date, index === 0)) {
+>>>>>>> upstream/master
           prev = prev.concat(date);
         }
         return prev;
@@ -228,11 +255,18 @@ export default {
           console.warn('[ElementCalendar]start time and end time interval must not exceed two months');
           return [];
         }
+<<<<<<< HEAD
+=======
         // 第一个月的时间范围
+>>>>>>> upstream/master
         data.push([
           start,
           lastDay
         ]);
+<<<<<<< HEAD
+        let interval = startDay.getDay();
+        interval = interval <= 1 ? Math.abs(interval - 1) : (8 - interval);
+=======
         // 下一月的时间范围，需要计算一下该月的第一个周起始日
         const firstDayOfWeek = this.realFirstDayOfWeek;
         const nextMontFirstDay = startDay.getDay();
@@ -245,6 +279,7 @@ export default {
             interval = interval > 0 ? interval : 7 + interval;
           }
         }
+>>>>>>> upstream/master
         startDay = this.toDate(startDay.getTime() + interval * oneDay);
         if (startDay.getDate() < end.getDate()) {
           data.push([

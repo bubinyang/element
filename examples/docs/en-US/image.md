@@ -108,6 +108,8 @@ Besides the native features of img, support lazy load, custom placeholder and lo
 ```
 :::
 
+<<<<<<< HEAD
+=======
 ### Image Preview
 
 :::demo allow big image preview by setting `previewSrcList` prop.
@@ -136,6 +138,7 @@ Besides the native features of img, support lazy load, custom placeholder and lo
 ```
 :::
 
+>>>>>>> upstream/master
 ### Attributes
 | Attribute | Description | Type  | Accepted values | Default   |
 |---------- |-------- |---------- |-------------  |-------- |
@@ -145,8 +148,11 @@ Besides the native features of img, support lazy load, custom placeholder and lo
 | referrer-policy | Native referrerPolicy | string | - | - |
 | lazy | Whether to use lazy load | boolean | — | false |
 | scroll-container | The container to add scroll listener when using lazy load | string / HTMLElement | — | The nearest parent container whose overflow property is auto or scroll |
+<<<<<<< HEAD
+=======
 | preview-src-list | allow big image preview | Array | — | - |
 | z-index | set image preview z-index | Number | — | 2000 |
+>>>>>>> upstream/master
 
 ### Events
 | Event Name | Description | Parameters |
