@@ -108,6 +108,8 @@ describe('Image', () => {
     await wait();
     expect(result).to.exist;
   });
+<<<<<<< HEAD
+=======
 
   it('big image preview', async() => {
     vm = createVue({
@@ -129,5 +131,6 @@ describe('Image', () => {
     await wait(1000);
     expect(vm.$el.querySelector('.el-image-viewer__wrapper')).to.not.exist;
   });
+>>>>>>> upstream/master
 });
 

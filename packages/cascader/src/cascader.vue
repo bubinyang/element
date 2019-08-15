@@ -307,6 +307,14 @@ export default {
       }
     },
     checkedValue(val) {
+<<<<<<< HEAD
+      const { value } = this;
+      if (!isEqual(val, value) || isUndefined(value)) {
+        this.$emit('input', val);
+        this.$emit('change', val);
+        this.dispatch('ElFormItem', 'el.form.change', [val]);
+        this.computePresentContent();
+=======
       const { value, dropDownVisible } = this;
       const { checkStrictly, multiple } = this.config;
 
@@ -320,6 +328,7 @@ export default {
         this.$emit('input', val);
         this.$emit('change', val);
         this.dispatch('ElFormItem', 'el.form.change', [val]);
+>>>>>>> upstream/master
       }
     },
     options: {
@@ -472,13 +481,25 @@ export default {
       });
     },
     computePresentContent() {
+<<<<<<< HEAD
+      this.$nextTick(() => {
+        const { multiple, checkStrictly } = this.config;
+        if (multiple) {
+=======
       // nextTick is required, because checked nodes may not change right now
       this.$nextTick(() => {
         if (this.config.multiple) {
+>>>>>>> upstream/master
           this.computePresentTags();
           this.presentText = this.presentTags.length ? ' ' : null;
         } else {
           this.computePresentText();
+<<<<<<< HEAD
+          if (!checkStrictly && this.dropDownVisible) {
+            this.toggleDropDownVisible(false);
+          }
+=======
+>>>>>>> upstream/master
         }
       });
     },
@@ -634,10 +655,13 @@ export default {
         this.updatePopper();
       }
     },
+<<<<<<< HEAD
+=======
 
     /**
      * public methods
     */
+>>>>>>> upstream/master
     getCheckedNodes(leafOnly) {
       return this.panel.getCheckedNodes(leafOnly);
     }

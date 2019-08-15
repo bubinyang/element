@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+import { createVue, destroyVM } from '../util';
+=======
 import { createVue, destroyVM, waitImmediate } from '../util';
+>>>>>>> upstream/master
 
 describe('Dialog', () => {
   let vm;
@@ -289,6 +293,8 @@ describe('Dialog', () => {
       }, 500);
     }, 10);
   });
+<<<<<<< HEAD
+=======
 
   it('destroyOnClose', async() => {
     vm = createVue({
@@ -316,4 +322,5 @@ describe('Dialog', () => {
     await waitImmediate();
     expect(dialog.$el.querySelector('input').value).to.be.equal('');
   });
+>>>>>>> upstream/master
 });

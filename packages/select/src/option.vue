@@ -153,10 +153,13 @@
     },
 
     beforeDestroy() {
+<<<<<<< HEAD
+=======
       let index = this.select.cachedOptions.indexOf(this);
       if (index > -1) {
         this.select.cachedOptions.splice(index, 1);
       }
+>>>>>>> upstream/master
       this.select.onOptionDestroy(this.select.options.indexOf(this));
     }
   };

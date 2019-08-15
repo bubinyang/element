@@ -109,8 +109,12 @@ export default {
       checkedNodePaths: [],
       store: [],
       menus: [],
+<<<<<<< HEAD
+      activePath: []
+=======
       activePath: [],
       loadCount: 0
+>>>>>>> upstream/master
     };
   },
 
@@ -195,6 +199,24 @@ export default {
       });
     },
     syncActivePath() {
+<<<<<<< HEAD
+      let { checkedValue, store, multiple } = this;
+      if (isEmpty(checkedValue)) {
+        this.activePath = [];
+        this.menus = [store.getNodes()];
+      } else {
+        checkedValue = multiple ? checkedValue[0] : checkedValue;
+        const checkedNode = this.getNodeByValue(checkedValue) || {};
+        const nodes = [];
+        let { parent } = checkedNode;
+        while (parent) {
+          nodes.unshift(parent);
+          parent = parent.parent;
+        }
+        nodes.forEach(node => this.handleExpand(node, true /* silent */));
+      }
+    },
+=======
       const { store, multiple, activePath, checkedValue } = this;
 
       if (!isEmpty(activePath)) {
@@ -213,6 +235,7 @@ export default {
     expandNodes(nodes) {
       nodes.forEach(node => this.handleExpand(node, true /* silent */));
     },
+>>>>>>> upstream/master
     calculateCheckedNodePaths() {
       const { checkedValue, multiple } = this;
       const checkedValues = multiple
@@ -261,9 +284,14 @@ export default {
       }
     },
     handleExpand(node, silent) {
+<<<<<<< HEAD
+      const { level } = node;
+      const path = this.activePath.slice(0, level - 1);
+=======
       const { activePath } = this;
       const { level } = node;
       const path = activePath.slice(0, level - 1);
+>>>>>>> upstream/master
       const menus = this.menus.slice(0, level);
 
       if (!node.isLeaf) {
@@ -271,16 +299,26 @@ export default {
         menus.push(node.children);
       }
 
+<<<<<<< HEAD
+      if (valueEquals(path, this.activePath)) return;
+
+=======
+>>>>>>> upstream/master
       this.activePath = path;
       this.menus = menus;
 
       if (!silent) {
         const pathValues = path.map(node => node.getValue());
+<<<<<<< HEAD
+        this.$emit('active-item-change', pathValues); // Deprecated
+        this.$emit('expand-change', pathValues);
+=======
         const activePathValues = activePath.map(node => node.getValue());
         if (!valueEquals(pathValues, activePathValues)) {
           this.$emit('active-item-change', pathValues); // Deprecated
           this.$emit('expand-change', pathValues);
         }
+>>>>>>> upstream/master
       }
     },
     handleCheckChange(value) {
@@ -299,6 +337,8 @@ export default {
         dataList && dataList.length && this.store.appendNodes(dataList, parent);
         node.loading = false;
         node.loaded = true;
+<<<<<<< HEAD
+=======
 
         // dispose default value on lazy load mode
         if (Array.isArray(this.checkedValue)) {
@@ -321,11 +361,15 @@ export default {
           }
         }
 
+>>>>>>> upstream/master
         onFullfiled && onFullfiled(dataList);
       };
       config.lazyLoad(node, resolve);
     },
+<<<<<<< HEAD
+=======
 
+>>>>>>> upstream/master
     /**
      * public methods
     */
